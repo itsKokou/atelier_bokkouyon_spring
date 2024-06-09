@@ -1,5 +1,6 @@
 package ism.spring.web.dto.request;
 
+import ism.spring.data.entities.Passager;
 import ism.spring.data.entities.Trajet;
 import ism.spring.data.enums.EtatTrajet;
 import jakarta.validation.constraints.Min;
@@ -18,44 +19,25 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TrajetCreateRequestDto {
-    private Long id;
-    @NotNull
-    @Min(value = 1, message = "Le conducteur est obligatoire")
-    private Long conducteur;
-    @NotBlank(message = "La date est obligatoire")
-    private String date;
-    @NotBlank(message = "Le point de départ est obligatoire")
-    private String pointDepart;
-    @NotBlank(message = "Le point d'arrivée est obligatoire")
-    private String pointArrivee;
-    @Min(value = 0, message = "Le nombre de passager est obligatoire")
-    private Integer nbrPassagers;
-    @Min(value = 1, message = "Le nbre de place libre est obligatoire")
-    private Integer nbrPlace;
-    @Min(value = 50, message = "Le prix est obligatoire")
-    private Double prix;
+public class PassagerCreateRequestDto {
+    @NotBlank(message = "Le username est obligatoire")
+    private String username;
+    @NotBlank(message = "Le password est obligatoire")
+    private String password;
+    @NotBlank(message = "Le nom complet est obligatoire")
+    private String nomComplet;
+    @NotBlank(message = "Le telephone est obligatoire")
+    private String telephone;
 
 
+    public Passager toEntity(){
 
-    public Trajet toEntity(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
-        try {
-            date = sdf.parse(this.date);
-            Trajet trajet = Trajet.builder()
-                    .etat(EtatTrajet.Restant)
-                    .pointDepart(pointDepart)
-                    .pointArrivee(pointArrivee)
-                    .nbrPassagers(nbrPassagers)
-                    .nbrPlace(nbrPlace)
-                    .prix(prix)
-                    .date(date)
-                    .build();
-            return trajet;
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+            Passager passager = new Passager();
+            passager.setTelephone(telephone);
+            passager.setNomComplet(nomComplet);
+            passager.setLogin(username);
+            return passager;
+
 
 
     }

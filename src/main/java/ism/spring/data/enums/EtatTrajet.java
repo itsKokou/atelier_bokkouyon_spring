@@ -6,8 +6,8 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum EtatTrajet {
-    Prevu(0),
-    Termine(1);
+    Plein(0),
+    Restant(1);
 
     private final Integer indexEnumEtat;
 }

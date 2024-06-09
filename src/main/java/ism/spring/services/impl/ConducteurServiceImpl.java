@@ -6,6 +6,7 @@ import ism.spring.services.ConducteurService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,5 +22,10 @@ public class ConducteurServiceImpl implements ConducteurService {
     @Override
     public Optional<Conducteur> show(Long id) {
         return conducteurRepository.findById(id);
+    }
+
+    @Override
+    public List<Conducteur> getAllList() {
+        return conducteurRepository.findAll();
     }
 }

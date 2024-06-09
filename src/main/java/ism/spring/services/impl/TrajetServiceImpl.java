@@ -1,6 +1,8 @@
 package ism.spring.services.impl;
 
+import ism.spring.data.entities.Conducteur;
 import ism.spring.data.entities.Trajet;
+import ism.spring.data.enums.EtatTrajet;
 import ism.spring.data.repositories.TrajetRepository;
 import ism.spring.services.TrajetService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,11 @@ public class TrajetServiceImpl implements TrajetService {
     @Override
     public Page<Trajet> getAllTrajet(Pageable pageable) {
         return trajetRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Trajet> getAllByEtatAndConducteur(Conducteur conducteur, EtatTrajet etat, Pageable pageable) {
+        return trajetRepository.findByEtatAndConducteur(conducteur, etat, pageable);
     }
 
     @Override

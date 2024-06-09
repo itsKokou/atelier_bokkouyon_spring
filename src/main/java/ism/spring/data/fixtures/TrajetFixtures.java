@@ -27,7 +27,7 @@ public class TrajetFixtures implements CommandLineRunner {
         for (int i = 1; i <= 8; i++) {
             Trajet trajet = new Trajet();
             trajet.setDate(new Date());
-            trajet.setEtat(EtatTrajet.Prevu);
+            trajet.setEtat(EtatTrajet.Restant);
             trajet.setPrix(200.0);
             trajet.setNbrPassagers(1);
             trajet.setNbrPlace(3);
